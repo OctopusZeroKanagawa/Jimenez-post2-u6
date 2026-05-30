@@ -114,3 +114,19 @@ button:hover {
     text-decoration: none;
     color: #dc2626;
 }
+
+.alert-error {
+    background: #ffe5e5;
+    color: #b00020;
+    border: 1px solid #ffb3b3;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.campo-error {
+    display: block;
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
