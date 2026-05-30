@@ -1,193 +1,114 @@
-# Sistema CRUD de Inventario de Productos
+# Sistema de Gestión de Productos MVC
 
-## Descripción del Proyecto
+## Descripción
 
-Este proyecto consiste en el desarrollo de una aplicación web CRUD (Create, Read, Update y Delete) para la gestión de productos de un inventario. La aplicación fue desarrollada siguiendo el patrón de arquitectura MVC (Modelo - Vista - Controlador), utilizando tecnologías Java Web y una base de datos MySQL para el almacenamiento de la información.
+Aplicación web desarrollada en Java utilizando el patrón de arquitectura MVC (Modelo-Vista-Controlador) para la gestión de productos. El sistema permite realizar operaciones CRUD (Crear, Consultar, Actualizar y Eliminar) sobre un inventario de productos, incorporando autenticación de usuarios, validaciones del lado del servidor e internacionalización (i18n).
 
-El sistema permite registrar, consultar, editar y eliminar productos dentro de un inventario mediante una interfaz web sencilla e intuitiva.
+## Características
 
----
+### Gestión de Productos
 
-# Funcionalidades Implementadas
-
-* Registro de nuevos productos.
-* Listado dinámico de productos almacenados.
+* Registro de productos.
+* Consulta de productos registrados.
 * Edición de productos existentes.
 * Eliminación de productos.
-* Validaciones básicas en formularios.
-* Conexión a base de datos MySQL mediante JDBC.
-* Navegación entre vistas JSP.
-* Arquitectura basada en el patrón MVC.
+* Visualización del inventario en formato tabular.
 
----
+### Autenticación
 
-# Tecnologías Utilizadas
+* Inicio de sesión mediante HttpSession.
+* Control de acceso a recursos protegidos.
+* Cierre de sesión.
+* Gestión de roles básicos (ADMIN y VIEWER).
 
-## Backend
+### Validaciones
+
+* Nombre obligatorio.
+* Longitud máxima de 100 caracteres para el nombre.
+* Precio numérico válido.
+* Precio no negativo.
+* Stock entero válido.
+* Stock no negativo.
+* Conservación de datos ingresados cuando ocurren errores.
+
+### Internacionalización (i18n)
+
+* Soporte para español e inglés.
+* Cambio dinámico de idioma.
+* Persistencia del idioma seleccionado durante la sesión.
+
+## Tecnologías Utilizadas
 
 * Java 17
-* Jakarta Servlet API
+* Jakarta Servlet 6.0
 * JSP (Java Server Pages)
-* JDBC
-* Apache Tomcat 10.1.55
-
-## Frontend
-
+* JSTL 3.0.1
+* Maven
 * HTML5
 * CSS3
+* Apache Tomcat
 
-## Base de Datos
 
-* MySQL
+## Usuarios de Prueba
 
-## Gestión del Proyecto
+| Usuario | Contraseña | Rol    |
+| ------- | ---------- | ------ |
+| admin   | Admin123!  | ADMIN  |
+| viewer  | View456!   | VIEWER |
 
-* Maven
-* Git y GitHub
-* IntelliJ IDEA
+## Instalación y Ejecución
 
----
+### Requisitos
 
-# Capturas del Sistema
+* JDK 17 o superior.
+* Apache Tomcat 10 o superior.
+* Maven 3.8 o superior.
 
-## Listado de Productos
+### Compilación
 
-![Listado de Productos](Capturas%20de%20pantalla/Captura%20de%20pantalla_20260528_100327.png)
+mvn clean package
 
----
+### Despliegue
 
-## Registro de Productos
+1. Generar el archivo WAR mediante Maven.
+2. Copiar el archivo generado en la carpeta webapps de Tomcat.
+3. Iniciar el servidor Tomcat.
+4. Acceder a la aplicación desde el navegador.
 
-![Registro de Productos](Capturas%20de%20pantalla/Captura%20de%20pantalla_20260528_100340.png)
+### URL de acceso
 
----
+http://localhost:8080/mvc-productos
 
-## Edición de Productos
+## Patrón Arquitectónico
 
-![Edición de Productos](Capturas%20de%20pantalla/Captura%20de%20pantalla_20260528_100350.png)
+El proyecto implementa el patrón Modelo-Vista-Controlador (MVC):
 
----
+### Modelo
 
-## Eliminación de Productos
+Representa los datos de la aplicación mediante las clases Producto y Usuario.
 
-![Eliminación de Productos](Capturas%20de%20pantalla/Captura%20de%20pantalla_20260528_100407.png)
+### Vista
 
-# Patrón MVC Implementado
+Implementada mediante JSP y JSTL para la presentación de información al usuario.
 
-## Modelo (Model)
+### Controlador
 
-Representa la estructura de los datos y la lógica de negocio del sistema. Incluye las clases relacionadas con los productos y el acceso a datos mediante JDBC.
+Implementado mediante Servlets que gestionan las solicitudes HTTP y coordinan la interacción entre modelo y vista.
 
-## Vista (View)
+## Funcionalidades Implementadas
 
-Compuesta por páginas JSP encargadas de mostrar la información al usuario y capturar los datos desde formularios HTML.
+* CRUD completo de productos.
+* Autenticación basada en sesiones.
+* Protección de rutas.
+* Validación de formularios.
+* Mensajes de error personalizados.
+* Internacionalización español/inglés.
+* Persistencia de idioma en sesión.
+* Cierre de sesión seguro.
 
-## Controlador (Controller)
-
-Implementado mediante Servlets, responsables de recibir las solicitudes HTTP, procesar la lógica correspondiente y redireccionar hacia las vistas.
-
----
-
-
-# Dependencias Maven Utilizadas
-
-<dependencies>
-    <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>6.0.0</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-j</artifactId>
-        <version>9.3.0</version>
-    </dependency>
-    <dependency>
-        <groupId>org.glassfish.web</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-        <version>3.0.1</version>
-    </dependency>
-
-</dependencies>
-
----
-
-# Configuración y Despliegue del Proyecto
-
-## Requisitos Previos
-
-Antes de ejecutar el proyecto es necesario tener instalado:
-
-* Java JDK 17
-* Apache Tomcat 10
-* MySQL Server
-* Maven
-* IntelliJ IDEA (recomendado)
-
----
-
-# Pasos para Ejecutar el Proyecto
-
-## 1. Clonar el repositorio
-
-git clone <URL_DEL_REPOSITORIO>
-
----
-
-## 2. Configurar la base de datos
-
-Crear la base de datos ejecutando el script SQL mostrado anteriormente.
-
----
-
-## 3. Configurar credenciales MySQL
-
-Modificar los datos de conexión dentro de la clase correspondiente de conexión JDBC:
-
-private static final String URL = "jdbc:mysql://localhost:3306/inventario_db";
-private static final String USER = "root";
-private static final String PASSWORD = "password";
-
----
-
-## 4. Cargar dependencias Maven
-
-Desde IntelliJ IDEA:
-
-Maven → Reload Project
-
-O desde terminal:
-
-mvn clean install
-
----
-
-## 5. Configurar Tomcat
-
-Agregar Apache Tomcat 10 al proyecto y desplegar el artifact:
-
-mvc-productos:war exploded
-
----
-
-## 6. Ejecutar la aplicación
-
-Iniciar Tomcat y acceder desde el navegador:
-
-
-http://localhost:8080/mvc-productos/productos
-
----
-
-# Observaciones Técnicas
-
-Durante el desarrollo se realizaron configuraciones relacionadas con JSTL y Jakarta EE para compatibilidad con Apache Tomcat 10 y Jakarta Servlet API 6.0. Finalmente se implementaron vistas JSP utilizando scriptlets tradicionales para garantizar estabilidad y compatibilidad completa con el entorno de ejecución.
-
----
-
-# Autor
+## Autor
 
 Andrés Jiménez
 
-Proyecto académico desarrollado para la asignatura de Programación Web.
+Ingeniería de Sistemas
+Universidad Francisco de Paula Santander (UFPS)
